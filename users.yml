@@ -1,0 +1,19 @@
+---
+- name: Playbook for user management 
+  hosts: win1.example.com
+  tasks:
+
+    - name: Create user wilama watson
+      win_user:
+        name: wilma watson
+        password: redhat
+        state: present
+        groups:
+          - Users
+
+    - name: Add wilma user to Print operators group
+      win_group_membership:
+        name: Print operators
+        members:
+          - wilma watson
+        state: present
